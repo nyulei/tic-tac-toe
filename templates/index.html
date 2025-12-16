@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Tic Tac Toe</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+  <script defer src="{{ url_for('static', filename='app.js') }}"></script>
+</head>
+<body>
+  <main class="page">
+    <section class="card">
+      <header class="card__header">
+        <div>
+          <p class="eyebrow">Python + Flask demo</p>
+          <h1>Tic Tac Toe</h1>
+        </div>
+        <button class="ghost" id="reset" aria-label="Start a new game">Reset</button>
+      </header>
+
+      <p id="status" class="status" role="status">Player X's turn</p>
+
+      <div class="board" role="grid" aria-label="Tic Tac Toe board" data-board>
+        {% for i in range(9) %}
+        <button class="cell" role="gridcell" aria-live="polite" data-cell data-index="{{ i }}" aria-label="Cell {{ i + 1 }}"></button>
+        {% endfor %}
+      </div>
+
+      <section class="info">
+        <div>
+          <p class="label">Rules</p>
+          <p class="body">Take turns as X and O. First to three in a row wins. If the board fills without a line, it's a draw.</p>
+        </div>
+        <div class="badge" id="score">X: 0 · O: 0 · Draws: 0</div>
+      </section>
+    </section>
+  </main>
+</body>
+</html>
